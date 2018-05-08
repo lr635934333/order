@@ -4,7 +4,6 @@
 .project
 *.project
 .settings/*
-target/*
 logs/*
 *.idea/*
 *.iml
