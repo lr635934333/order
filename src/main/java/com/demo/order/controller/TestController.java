@@ -1,13 +1,10 @@
 package com.demo.order.controller;
 
 import com.demo.order.service.TestService;
-import com.demo.order.vo.TestDemoVo;
+import com.demo.order.domain.TestDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/demo/test")
@@ -17,12 +14,12 @@ public class TestController {
     private TestService service;
 
     @RequestMapping(value = "", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE } )
-    public void test(@RequestBody TestDemoVo demo){
-        System.out.printf(demo.getName());
+    public TestDemo test(@RequestBody TestDemo demo){
+        return service.testService(demo);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public void get(){
-        service.testService();
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public TestDemo get(@PathVariable String id){
+        return service.get(id);
     }
 }
