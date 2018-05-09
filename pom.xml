@@ -20,6 +20,8 @@
     <hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
     <hibernate.data.version>4.3.6.Final</hibernate.data.version>
     <jackson.version>2.6.5</jackson.version>
+    <c3p0.version>0.9.5.2</c3p0.version>
+    <servlet.version>3.0.1</servlet.version>
   </properties>
 
   <dependencies>
@@ -27,8 +29,7 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
-      <scope>provided</scope>
+      <version>${servlet.version}</version>
     </dependency>
 
     <dependency>
@@ -83,7 +84,24 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${hibernate.data.version}</version>
     </dependency>
-    <!--hibernate data-->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
 
     <!--spring data jpa start-->
     <dependency>
@@ -101,27 +119,7 @@
       <artifactId>spring-jdbc</artifactId>
       <version>${spring.version}</version>
     </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aspects</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-expression</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
     <!--spring framework end-->
-
-    <!--hibernate validator start-->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>${hibernate-validator.version}</version>
-    </dependency>
-    <!--hibernate validator end-->
 
     <!--jackson start-->
     <dependency>
@@ -146,8 +144,15 @@
     <dependency>
       <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
-      <version>0.9.5.2</version>
+      <version>${c3p0.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>6.0.2</version>
+    </dependency>
+    <!--数据库连接 end-->
 
     <!-- Hibernate -->
     <dependency>
@@ -160,17 +165,14 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${hibernate.data.version}</version>
-      <!-- <scope>runtime</scope> -->
     </dependency>
 
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>6.0.2</version>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
     </dependency>
 
-
-    <!--数据库连接 end-->
   </dependencies>
 
   <build>
